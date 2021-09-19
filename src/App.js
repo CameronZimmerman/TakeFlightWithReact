@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  //keep track of our current exercise/solutions
+  state = {
+    exercise: 0,
+    exerciseData: null
+  };
+
+  async componentDidMount() {
+    const response = await fetch("exercise_data.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    const exerciseData = await response.json();
+    this.setState({ exerciseData });
+    console.log(exerciseData)
+  }
+
+  render() {
+    return (
+      <div
+        className="App"
+        style={{
+          backgroundImage: 'url("/assets/TakeFlightWithReactPageBg.png")',
+        }}
+      >
+        {/* instance of our godot game */}
+        <iframe title="game" src="/export" className="game" />
+      </div>
+    );
+  }
 }
-
-export default App;
