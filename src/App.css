@@ -1,4 +1,5 @@
 .App {
+  padding: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,6 +26,14 @@
 }
 .result {
   background-color: white;
+  display: default;
+  flex-direction: default;
+  align-items: inherit;
+  text-align: left;
+  min-height: default;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 h1,

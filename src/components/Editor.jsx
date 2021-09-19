@@ -4,8 +4,6 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import nightOwl from "prism-react-renderer/themes/nightOwl";
 
 const Editor = React.forwardRef(({ code, context, displayContext }, ref) => {
-  const scope = JSON.parse(context);
-  console.log(scope);
   return (
     <section className="code-container">
       <h3>Context</h3>
@@ -28,7 +26,7 @@ const Editor = React.forwardRef(({ code, context, displayContext }, ref) => {
         )}
       </Highlight>
       <h3>Your Code</h3>
-      <LiveProvider code={code} scope={scope}>
+      <LiveProvider code={code} scope={context}>
         <LiveEditor theme={nightOwl} />
         <LiveError style={{ color: "red" }} />
         <div ref={ref}>

@@ -1,30 +1,21 @@
 import React from "react";
 import "./App.css";
 import Editor from "./components/Editor";
+import exerciseData from "./data/exerciseData"
 
 export default class App extends React.Component {
   //keep track of our current exercise/solutions
   state = {
     exercise: 0,
-    exerciseDataArrays: [],
+    exerciseData: exerciseData,
     resultElementRef: React.createRef()
   };
-  async componentDidMount() {
-    const response = await fetch("exercise_data.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-
-    const exerciseDataArrays = await response.json();
-    this.setState({ exerciseDataArrays });
-  }
-
+  
   render() {
     const { codeContext, displayContext, exerciseInitialCode } =
-      this.state.exerciseDataArrays;
+      this.state.exerciseData;
     const { exercise, resultElementRef } = this.state;
+    console.log(codeContext, displayContext, exerciseInitialCode)
     return (
       <div
         className="App"
@@ -42,6 +33,7 @@ export default class App extends React.Component {
             context={codeContext[exercise]}
           />
         }
+        <button>Submit Code</button>
       </div>
     );
   }
