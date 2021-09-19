@@ -1,6 +1,6 @@
 {
   "codeContext": [
-    "const test = ['hi', 'this', 'is', 'a', 'test']"
+    "{ \"test\" : \"['hi', 'this', 'is', 'a', 'test']\" }"
   ],
   "displayContext": [
     "const test = ['hi', 'this', 'is', 'a', 'test']"

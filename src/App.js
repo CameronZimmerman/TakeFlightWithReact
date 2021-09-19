@@ -1,13 +1,14 @@
 import React from "react";
 import "./App.css";
+import Editor from "./components/Editor";
 
 export default class App extends React.Component {
   //keep track of our current exercise/solutions
   state = {
     exercise: 0,
-    exerciseData: null
+    exerciseDataArrays: [],
+    resultElementRef: React.createRef()
   };
-
   async componentDidMount() {
     const response = await fetch("exercise_data.json", {
       headers: {
@@ -16,12 +17,14 @@ export default class App extends React.Component {
       },
     });
 
-    const exerciseData = await response.json();
-    this.setState({ exerciseData });
-    console.log(exerciseData)
+    const exerciseDataArrays = await response.json();
+    this.setState({ exerciseDataArrays });
   }
 
   render() {
+    const { codeContext, displayContext, exerciseInitialCode } =
+      this.state.exerciseDataArrays;
+    const { exercise, resultElementRef } = this.state;
     return (
       <div
         className="App"
@@ -31,6 +34,14 @@ export default class App extends React.Component {
       >
         {/* instance of our godot game */}
         <iframe title="game" src="/export" className="game" />
+        {
+          codeContext && <Editor
+            ref={resultElementRef}
+            code={exerciseInitialCode[exercise]}
+            displayContext={displayContext[exercise]}
+            context={codeContext[exercise]}
+          />
+        }
       </div>
     );
   }
