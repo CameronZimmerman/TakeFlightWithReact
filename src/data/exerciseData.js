@@ -1,15 +1,21 @@
 const exerciseData = {
   codeContext: [
-    { test : ["hi", "this", "is", "a", "test"] }
+    {}
   ],
   displayContext: [
-    "const test = ['hi', 'this', 'is', 'a', 'test']"
+    "//Tutorial"
   ],
   exerciseInitialCode: [
-    "<div>test</div>"
+    "<div>Hello World</div>"
   ],
   solutionEvalCode: [
-    "const div = this.state.resultElement.current.querySelector('div')/n console.log(div)"
+    `const div = this.resultElementRef.current.querySelector('div')
+console.log(div, div.innerHTML)
+if(div.innerHTML === '<div>Hello World</div>') {
+  correct = true
+} else {
+  correct = false
+}`
   ]
 }
 

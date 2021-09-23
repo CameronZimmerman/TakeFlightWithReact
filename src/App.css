@@ -1,5 +1,5 @@
 .App {
-  padding: 50px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,12 +12,16 @@
 }
 
 .game {
-  width: 626px;
-  height: 352px;
+  width: 640px;
+  height: 360px;
 }
 .code-container {
-  width: 626px;
+  width: 640px;
   padding: 2%;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .prism-code {
